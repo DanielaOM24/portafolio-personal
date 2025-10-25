@@ -9,7 +9,7 @@ export default function Header() {
     <header className="fixed top-0 left-0 w-full bg-gray-900 text-white z-50 shadow">
       <div className="max-w-6xl mx-auto flex items-center justify-between px-4 py-3">
         <Link href="/" className="inline-flex items-center gap-2">
-          <span className="text-lg font-semibold">Daniela <span className="text-teal-400">Dev</span></span>
+          <span className="text-lg font-semibold">Portafolio <span className="text-teal-400">personal</span></span>
         </Link>
 
         <nav aria-label="Main navigation">
