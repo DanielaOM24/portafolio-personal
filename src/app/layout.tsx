@@ -1,5 +1,5 @@
 import "../styles/globals.css"
-import { Header } from "@/components/Header"
+import Header from "@/components/Header"
 
 export const metadata = {
   title: "Daniela's Portfolio",
@@ -13,9 +13,9 @@ export default function Rootlayout({
 }){
   return (
     <html lang="es">
-      <body>
+      <body className="antialiased">
         <Header />
-        <main>{children}</main>
+        <main className="min-h-screen">{children}</main>
       </body>
     </html>
   )

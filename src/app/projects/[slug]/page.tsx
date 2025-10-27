@@ -13,38 +13,59 @@ export default function ProjectDetailPage({ params }: Props) {
 
   if (!project) {
     return (
-      <div className="max-w-4xl mx-auto px-4 py-16">
-        <h2 className="text-2xl font-semibold">Project not found</h2>
-        <p className="mt-4">No se encontró el proyecto.</p>
-        <Link href="/projects" className="text-teal-600 mt-4 inline-block">Volver a proyectos</Link>
+      <div className="max-w-4xl mx-auto px-6 py-20 mt-16 text-center">
+        <h2 className="text-3xl font-bold text-white mb-4">Project not found</h2>
+        <p className="text-gray-300 mb-8">No se encontró el proyecto.</p>
+        <Link href="/projects" className="text-purple-400 hover:text-purple-300 transition-colors">← Back to Projects</Link>
       </div>
     );
   }
 
   return (
-    <main className="max-w-4xl mx-auto px-4 py-12">
-      <h1 className="text-3xl font-bold">{project.title}</h1>
-      <p className="text-gray-600 mt-2">{project.short}</p>
+    <main className="max-w-4xl mx-auto px-6 py-20 mt-16">
+      <div className="fade-in">
+        {/* Back Button */}
+        <Link 
+          href="/projects" 
+          className="inline-flex items-center gap-2 text-purple-400 hover:text-purple-300 transition-colors mb-8"
+        >
+          ← Back to Projects
+        </Link>
 
-      {project.image && (
-        <div className="w-full h-64 relative mt-6 rounded overflow-hidden">
-          <Image src={project.image} alt={project.title} fill className="object-cover" />
-        </div>
-      )}
+        {/* Project Title */}
+        <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">{project.title}</h1>
+        <p className="text-xl text-gray-300 mb-8">{project.short}</p>
 
-      <section className="mt-6">
-        <h2 className="text-xl font-semibold">Descripción</h2>
-        <p className="mt-2 text-gray-700">{project.description}</p>
-      </section>
+        {/* Project Image */}
+        {project.image && (
+          <div className="w-full h-96 relative mt-6 rounded-2xl overflow-hidden shadow-2xl border border-purple-500/20">
+            <Image src={project.image} alt={project.title} fill className="object-cover" />
+          </div>
+        )}
 
-      {project.tech && (
-        <div className="mt-4">
-          <h3 className="font-medium">Tecnologías</h3>
-          <ul className="flex gap-2 flex-wrap mt-2">
-            {project.tech.map(t => <li key={t} className="text-sm px-2 py-1 bg-gray-100 rounded">{t}</li>)}
-          </ul>
-        </div>
-      )}
+        {/* Description Section */}
+        <section className="mt-10 bg-white/5 backdrop-blur-xl rounded-2xl p-8 border border-white/10">
+          <h2 className="text-2xl font-semibold text-white mb-4">Description</h2>
+          <p className="text-gray-300 leading-relaxed">{project.description}</p>
+        </section>
+
+        {/* Technologies Section */}
+        {project.tech && (
+          <div className="mt-8">
+            <h3 className="text-xl font-semibold text-white mb-4">Technologies</h3>
+            <ul className="flex gap-3 flex-wrap">
+              {project.tech.map(t => (
+                <li 
+                  key={t} 
+                  className="px-4 py-2 bg-gradient-to-r from-purple-600 to-pink-600 text-white rounded-full font-medium"
+                >
+                  {t}
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+      </div>
     </main>
   );
 }
